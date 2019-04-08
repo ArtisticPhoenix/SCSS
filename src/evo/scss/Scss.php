@@ -32,7 +32,9 @@ class Scss implements SingletonInterface{
                 'shortName' => 'b',
                 'longName'  => 'bootstrap',
                 'doc'       => 'SCSS Bootstraper file (should include @imports)',
-                'options'   => ['requireValue' => true]
+                'options'   => [
+                    'requireValue' => true
+                ]
             ],[
                 'shortName' => 'd',
                 'longName' => 'debug',
@@ -134,12 +136,12 @@ class Scss implements SingletonInterface{
         $this->Cli->fromConfig($config);
         $this->Cli->setAllowedRequestTypes(Cli::R_ALL);
         
-        /*if(Cli::REQUEST_CLI == $this->Cli->getCurrentRequestType()){
+        if(Cli::REQUEST_CLI == $this->Cli->getCurrentRequestType()){
             header('Content-type: text/plain');
         }elseif(Cli::REQUEST_POST | Cli::REQUEST_GET & $this->Cli->getCurrentRequestType()){
-            header('Content-type: text/html');*/
+            header('Content-type: text/html');
             echo "<pre>";
-       /* }*/
+        }
 
     }
     
@@ -193,8 +195,8 @@ class Scss implements SingletonInterface{
         $scss = '';
         
         if($needs_compile){
-            if($this->Cli->getArguments('b')){
-                $scss = $Pscss->compile('@import "'.$this->Cli->getArguments('b').'";');
+            if(false !== ($bootstrap = $this->Cli->getArguments('b', false))){
+                $scss = $Pscss->compile('@import "'.$bootstrap.'";');
             }else{
                 throw new InvalidArgument('Bootstrap [-b, -bootstrap] is required');
             }
