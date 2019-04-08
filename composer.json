@@ -1,0 +1,17 @@
+{
+	"name" : "evo/sass",
+	"autoload" : {
+		"psr-4" : {
+			"evo\\scss\\" : "src/evo/scss"
+		}
+	},
+	"require" : {
+		"php" : ">=5.6",
+		"evo/patterns" : "~1.0",
+		"evo/exception" : "dev-master",
+		"leafo/scssphp" : "~0.7",
+		"evo/cli" : "~1.0"
+	},
+	"minimum-stability" : "dev",
+	"prefer-stable" : true
+}
