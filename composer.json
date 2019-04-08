@@ -13,5 +13,15 @@
 		"evo/cli" : "~1.0"
 	},
 	"minimum-stability" : "dev",
-	"prefer-stable" : true
+	"prefer-stable" : true,
+	"description" : "CLI wrapper for leafo\\scss",
+	"type" : "library",
+	"license" : "GPL-3.0",
+	"authors" : [{
+			"name" : "Artisticphoenix"
+		}
+	],
+	"keywords" : [
+		"CLI SCSS"
+	]
 }
