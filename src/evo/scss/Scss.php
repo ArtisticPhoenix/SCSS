@@ -173,7 +173,7 @@ class Scss implements SingletonInterface{
         if($this->Cli->getArguments('f')) $Pscss->setFormatter('\\Leafo\\ScssPhp\\Formatter\\' . ucfirst(strtolower($this->Cli->getArguments('f'))));
         
         if($this->Cli->getArguments('m')) $Pscss->setSourceMap(Compiler::SOURCE_MAP_FILE);
-        
+
         $needs_compile = false;
         if(!$this->Cli->getArguments('n')){
             $scss_cache_file = rtrim($this->Cli->getArguments('a', __DIR__). '\/').'/'.self::CACHE_FILENAME;
@@ -195,6 +195,8 @@ class Scss implements SingletonInterface{
             $needs_compile = true;
         }
         
+        var_dump($needs_compile);
+        
         $scss = '';
         
         if($needs_compile){
@@ -206,9 +208,8 @@ class Scss implements SingletonInterface{
             
             if($this->Cli->getArguments('o')){
                 file_put_contents($this->Cli->getArguments('o'), $scss);
-            }else{
-                echo $scss;
             }
+            echo $scss;            
         }else{
             echo file_get_contents($this->Cli->getArguments('o'));
         }
