@@ -133,6 +133,7 @@ class Scss implements SingletonInterface{
         ];
           
         $this->Cli = Cli::getInstance();
+        
         $this->Cli->fromConfig($config);
         $this->Cli->setAllowedRequestTypes(Cli::R_ALL);
         
@@ -190,6 +191,8 @@ class Scss implements SingletonInterface{
             $scss_cache = array_replace($scss_cache, $scss_files);
             
             if($needs_compile) file_put_contents($scss_cache_file, '<?php return '.var_export($scss_cache,true).';');
+        }else{
+            $needs_compile = true;
         }
         
         $scss = '';
